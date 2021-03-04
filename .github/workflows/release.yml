@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      ADDON_NAME: square-one-local
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build --if-present
+
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: "${{ env.ADDON_NAME }}.zip"
+        exclusions: '*.git* /*node_modules/* .editorconfig /*src/*'
+
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "${{ env.ADDON_NAME }}.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
