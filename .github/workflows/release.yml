@@ -28,10 +28,11 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
-        filename: "${{ env.ADDON_NAME }}.zip"
+        filename: "${{ env.ADDON_NAME }}.tgz"
+        type: 'tar'
         exclusions: '*.git* /*node_modules/* .editorconfig /*src/*'
 
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "${{ env.ADDON_NAME }}.zip"
+        artifacts: "${{ env.ADDON_NAME }}.tgz"
         token: ${{ secrets.GITHUB_TOKEN }}
