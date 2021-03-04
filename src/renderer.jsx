@@ -25,7 +25,7 @@ export default function (context) {
 						ipcRenderer.send('save-sq', site.id, site.path);
 						event.target.setAttribute('disabled', 'true');
 					}}
-				>Apply Nginx config files for SquareOne development.
+				>Apply Nginx config files
 				</TextButton>
 				<ul>
 					<li><small>Requires PHP ^7.4</small></li>

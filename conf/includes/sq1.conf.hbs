@@ -1,7 +1,7 @@
 location /wp-content/ {
     root "{{root}}";
 
-    location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|eot|ttf|woff|mp4|m4v|mov|wmv|avi|mpg|ogv|3gp|3g2|flv|webm|aac|m4a|f4a|mp3|ogg|oga)$ {
+    location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|eot|ttf|woff|mp4|m4v|mov|wmv|avi|mpg|ogv|3gp|3g2|flv|webm|aac|m4a|f4a|mp3|ogg|oga|woff2)$ {
         try_files $uri =404;
     }
 
