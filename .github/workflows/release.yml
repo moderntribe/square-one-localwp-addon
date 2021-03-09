@@ -33,7 +33,7 @@ jobs:
 
     - name: build tar
       working-directory: ${{ env.BUILD_FOLDER }}
-      run: tar cvzf ../${{ env.ADDON_NAME }}.tar.gz --exclude='*/node_modules' ./
+      run: tar cvzf ../${{ env.ADDON_NAME }}.tar.gz ./
 
     - uses: ncipollo/release-action@v1
       with:
