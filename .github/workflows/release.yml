@@ -11,28 +11,31 @@ jobs:
 
     env:
       ADDON_NAME: square-one-local
+      BUILD_FOLDER: ./build
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: ${{ env.BUILD_FOLDER }}
+
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
 
     - name: Install dependencies
+      working-directory: ${{ env.BUILD_FOLDER }}
       run: npm ci
 
-    - name: Build
+    - name: Build Files
+      working-directory: ${{ env.BUILD_FOLDER }}
       run: npm run build --if-present
 
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: "${{ env.ADDON_NAME }}.tgz"
-        type: 'tar'
-        exclusions: '*.git* /*node_modules/* .editorconfig /*src/*'
+    - name: build tar
+      working-directory: ${{ env.BUILD_FOLDER }}
+      run: tar cvzf ../${{ env.ADDON_NAME }}.tar.gz --exclude='*/node_modules' ./
 
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "${{ env.ADDON_NAME }}.tgz"
+        artifacts: "${{ env.ADDON_NAME }}.tar.gz"
         token: ${{ secrets.GITHUB_TOKEN }}
