@@ -2,7 +2,7 @@
   "name": "square-one-local-addon",
   "productName": "SquareOne Local Add-on",
   "version": "1.0.1",
-  "author": "Chris Kindred",
+  "author": "Modern Tribe",
   "keywords": [
     "square-one"
   ],
@@ -14,10 +14,10 @@
   "main": "lib/main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChrisMKindred/square-one-local-addon"
+    "url": "https://github.com/moderntribe/square-one-localwp-addon"
   },
   "bugs": {
-    "url": "https://github.com/ChrisMKindred/square-one-local-addon/issues"
+    "url": "https://github.com/moderntribe/square-one-localwp-addon/issues"
   },
   "license": "MIT",
   "scripts": {
