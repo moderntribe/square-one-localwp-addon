@@ -51,3 +51,10 @@ DB_PASSWORD=root
 DB_HOST=localhost
 DB_TABLE_PREFIX=wp_
 ```
+
+### Importing
+
+SquareOne projects can be imported using the normal import and export functions
+of Local WP. When the import is complete, Local tries to update the wp-config.php
+with the new database connection items. You will need to revert the file back
+to what is in the git repo in order to connect to the database.
